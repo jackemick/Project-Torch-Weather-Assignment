@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState } from 'react';
-const apiKey = process.env.WEATHER_API_KEY;
+const apiKey = process.env.REACT_APP_WEATHER_API_KEY;
 const ApiContext = createContext();
 
 export function ApiProvider({ children }) {
@@ -7,7 +7,7 @@ export function ApiProvider({ children }) {
 
   const fetchData = async (location) => {
     try {
-      const response = await fetch('https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/'+ location +'?key=' + apiKey + '2&include=days');
+      const response = await fetch('https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/'+ location +'?key=' + apiKey + '&include=days');
       const jsonData = await response.json();
       setData(jsonData);
     } catch (error) {
